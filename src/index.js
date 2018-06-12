@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import LoginControl from './LoginControl'
+import Page from './Page'
 import registerServiceWorker from './registerServiceWorker';
 
 function Mailbox(props) {
@@ -22,4 +23,5 @@ const messages = ['React', 'Re: React', 'Re:Re: React'];
 
 ReactDOM.render(<LoginControl />, document.getElementById('root'));
 ReactDOM.render(<Mailbox unreadMessages={messages}/>, document.getElementById('root2'));
+ReactDOM.render(<Page />, document.getElementById('root3'));
 registerServiceWorker();
