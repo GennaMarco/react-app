@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+//START EXERCISE
 function FancyBorder(props) {
     return (
         <div className={'FancyBorder FancyBorder-' + props.color}>
@@ -23,6 +24,42 @@ function WelcomeDialog() {
         </FancyBorder>
     );
 }
-
 ReactDOM.render(<WelcomeDialog />, document.getElementById('root'));
+// END EXERICSE
+
+// START EXERCISE
+function Contacts() {
+    return <div className="Contacts" />;
+}
+
+function Chat() {
+    return <div className="Chat" />;
+}
+
+function SplitPane(props) {
+    return (
+        <div className="SplitPane">
+            <div className="SplitPane-left">
+                {props.left}
+            </div>
+            <div className="SplitPane-right">
+                {props.right}
+            </div>
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <SplitPane
+            left={
+                <Contacts />
+            }
+            right={
+                <Chat />
+            } />
+    );
+}
+ReactDOM.render(<App />, document.getElementById('root2'));
+// END EXERCISE
 registerServiceWorker();
