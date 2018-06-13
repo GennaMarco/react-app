@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import SignUpDialog from "./SignUpDialog";
 import registerServiceWorker from './registerServiceWorker';
 
 //START EXERCISE
@@ -61,5 +62,8 @@ function App() {
     );
 }
 ReactDOM.render(<App />, document.getElementById('root2'));
+// END EXERCISE
+// START EXERCISE
+ReactDOM.render(<SignUpDialog />, document.getElementById('root3'));
 // END EXERCISE
 registerServiceWorker();
