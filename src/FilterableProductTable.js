@@ -2,19 +2,6 @@ import React, { Component } from 'react';
 import SearchBar from "./SearchBar";
 import ProductTable from "./ProductTable";
 
-function filterProductsByValuesSearched(products, filterText, stocked) {
-    filterText = filterText.toLowerCase();
-
-    if (stocked) {
-        products = products.filter(function (product) {
-            return product.stocked;
-        });
-    }
-    return products.filter(function (product) {
-        return product.name.toLowerCase().indexOf(filterText) > -1 || product.price.indexOf(filterText) > -1;
-    });
-}
-
 class FilterableProductTable extends Component {
 
     constructor(props) {
@@ -32,7 +19,8 @@ class FilterableProductTable extends Component {
 
         const filterText = this.state.filterText;
         const stocked = this.state.stocked;
-        const products = filterProductsByValuesSearched(this.props.products, filterText, stocked);
+        let products = this.props.products;
+        products = filterProductsByValuesSearched(products, filterText, stocked);
 
         return (
             <div className="FilterableProductTable">
@@ -41,6 +29,20 @@ class FilterableProductTable extends Component {
             </div>
         );
     }
+}
+
+function filterProductsByValuesSearched(products, filterText, stocked) {
+    filterText = filterText.toLowerCase();
+
+    if (stocked) {
+        products = products.filter(function (product) {
+            return product.stocked;
+        });
+    }
+
+    return products.filter(function (product) {
+        return product.name.toLowerCase().indexOf(filterText) > -1 || product.price.indexOf(filterText) > -1;
+    });
 }
 
 export default FilterableProductTable;
