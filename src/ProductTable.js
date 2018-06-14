@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 function ProductCategoryRow(props) {
     return (
-        <tr>
+        <tr className="ProductCategoryRow">
             <td>
                 <strong>{props.category}</strong>
             </td>
@@ -14,7 +14,7 @@ function ProductRow(props) {
     const colorText = props.stocked ? '' : 'red';
 
     return (
-        <tr style={{color: colorText}}>
+        <tr className="ProductRow" style={{color: colorText}}>
             <td>
                 {props.name}
             </td>
