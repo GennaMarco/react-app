@@ -7,18 +7,18 @@ class FilterableProductTable extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {filterText: '', stocked: false};
+        this.state = {filterText: '', InStockOnly: false};
         this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
     }
 
     handleSearchBarChange(text, checked) {
-        this.setState({filterText: text, stocked: checked});
+        this.setState({filterText: text, InStockOnly: checked});
     }
 
     render() {
 
         const filterText = this.state.filterText;
-        const stocked = this.state.stocked;
+        const stocked = this.state.InStockOnly;
         let products = this.props.products;
         products = filterProductsByValuesSearched(products, filterText, stocked);
 
