@@ -1,5 +1,6 @@
 import {
     ADD_ARTICLE,
+    DELETE_ARTICLE,
 } from "../constants/articles-action-types";
 
 const reducerMap = {};
@@ -8,7 +9,16 @@ reducerMap[ADD_ARTICLE] = (state , action) => ({
     ...state,
     articles: [
         ...state.articles,
-        action.payload
+        action.article
+    ]
+});
+
+reducerMap[DELETE_ARTICLE] = (state , action) => ({
+    ...state,
+    articles: [
+        ...state.articles.filter(function (article) {
+            return article.id !== action.article.id;
+        })
     ]
 });
 
