@@ -1,8 +1,14 @@
+import articleReducer from "./articles";
+
 const initialState = {
-    articles: [
-        {title: 'test', id: 1},
-        {title: 'test-2', id: 2},
-        ]
+    articles: []
 };
-const rootReducer = (state = initialState, action) => state;
+
+const rootReducer = (state = initialState, action) => {
+    let newState = state;
+    newState = articleReducer(newState, action);
+
+    return newState;
+};
+
 export default rootReducer;

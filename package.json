@@ -17,6 +17,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-redux": "^5.0.7"
+    "react-redux": "^5.0.7",
+    "uuid": "^3.3.2"
   }
 }
