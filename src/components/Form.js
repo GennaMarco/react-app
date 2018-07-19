@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import { addArticle } from "../actions/articles";
+import {
+    addArticle,
+    updateArticle,
+} from "../actions/articles";
 
 const mapDispatchToProps = dispatch => {
     return {
-        addArticle: article => dispatch(addArticle(article))
+        addArticle: article => dispatch(addArticle(article)),
+        updateArticle: article => dispatch(updateArticle(article))
     };
 };
 
@@ -14,6 +18,7 @@ class ConnectedForm extends Component {
     constructor() {
         super();
         this.state = {
+            id: "",
             title: ""
         };
         this.handleChange = this.handleChange.bind(this);
@@ -21,19 +26,33 @@ class ConnectedForm extends Component {
     }
 
     handleChange(event) {
+        const articleToUpdate = this.props.articleToUpdate;
+        articleToUpdate.title = articleToUpdate ? event.target.value : "";
         this.setState({ [event.target.id]: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
+        const articleToUpdate = this.props.articleToUpdate;
         const { title } = this.state;
-        const id = uuidv1();
-        this.props.addArticle({ title, id });
+        if(articleToUpdate.id){
+            this.props.updateArticle(articleToUpdate);
+            resetObjectPropertiesToValue(articleToUpdate, '');
+        }
+        else {
+            const id = uuidv1();
+            this.props.addArticle({title, id});
+        }
         this.setState({ title: "" });
     }
 
     render() {
-        const { title } = this.state;
+        const articleToUpdate = this.props.articleToUpdate;
+        const title = articleToUpdate.id ? articleToUpdate.title : this.state.title;
+
+        const classBtn = articleToUpdate.id ? 'btn-warning' : 'btn-success';
+
+        debugger;
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -46,8 +65,8 @@ class ConnectedForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-success btn-lg">
-                    SAVE
+                <button type="submit" className={"btn btn-lg " + classBtn}>
+                    {articleToUpdate.id ? 'Edit' : 'Save'}
                 </button>
             </form>
         );
@@ -56,3 +75,11 @@ class ConnectedForm extends Component {
 const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 
 export default Form;
+
+function resetObjectPropertiesToValue(object, value){
+    for (let key in object) {
+        if (object.hasOwnProperty(key)) {
+            object[key] = value;
+        }
+    }
+}

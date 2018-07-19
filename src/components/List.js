@@ -14,6 +14,10 @@ const mapDispatchToProps = dispatch => {
 
 class ConnectedList extends React.Component {
 
+    handleUpdateArticle(article){
+        this.props.onArticleTriggerUpdate(article);
+    }
+
     handleDeleteArticle(article){
         this.props.deleteArticle(article);
     }
@@ -28,7 +32,12 @@ class ConnectedList extends React.Component {
                                 {el.title}
                             </div>
                             <div
-                                className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">
+                                className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">
+                                <a style={{float: 'right'}} className="btn btn-warning" onClick={() => this.handleUpdateArticle(el)}><span
+                                    className="glyphicon glyphicon-wrench"/></a>
+                            </div>
+                            <div
+                                className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                                 <a style={{float: 'right'}} className="btn btn-danger" onClick={() => this.handleDeleteArticle(el)}><span
                                     className="glyphicon glyphicon-remove"/></a>
                             </div>

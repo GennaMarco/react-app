@@ -1,5 +1,6 @@
 import {
     ADD_ARTICLE,
+    UPDATE_ARTICLE,
     DELETE_ARTICLE,
 } from "../constants/articles-action-types";
 
@@ -10,6 +11,21 @@ reducerMap[ADD_ARTICLE] = (state , action) => ({
     articles: [
         ...state.articles,
         action.article
+    ]
+});
+
+reducerMap[UPDATE_ARTICLE] = (state , action) => ({
+    ...state,
+    articles: [
+        ...state.articles.map( (article) => {
+            if (article.id === action.article.id){
+                //ritorna una copia dell'oggetto modificato
+                return JSON.parse(JSON.stringify(action.article));
+            }
+            else {
+               return article;
+            }
+        } )
     ]
 });
 
