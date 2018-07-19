@@ -10,7 +10,8 @@ class App extends React.Component {
         this.state = {
             articleToUpdate: {
                 id: '',
-                title: ''
+                title: '',
+                content: ''
             }
         };
     }
@@ -29,8 +30,7 @@ class App extends React.Component {
                     <List onArticleTriggerUpdate={(article) => this.handleArticleTriggerUpdate(article)}/>
                 </div>
                 <div className="col-md-4 offset-md-1">
-                    <h2>Add a new article</h2>
-                    <Form articleToUpdate={this.state.articleToUpdate} />
+                    <Form articleToUpdate={this.state.articleToUpdate}/>
                 </div>
             </div>
         )
