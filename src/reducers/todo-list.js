@@ -6,9 +6,9 @@ const reducerMap = {};
 
 reducerMap[ADD_ITEM] = (state , action) => ({
     ...state,
-    articles: [
-        ...state.articles,
-        action.article
+    todo_list: [
+        ...state.todo_list,
+        action.item
     ]
 });
 

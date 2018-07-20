@@ -1,6 +1,6 @@
 import React from "react";
-//import List from "./List";
-//import Form from "./Form";
+import List from "../components/todo-list/List";
+import Form from "../components/todo-list/Form";
 
 class App extends React.Component {
 
@@ -9,10 +9,10 @@ class App extends React.Component {
             <div className="row mt-5">
                 <div className="col-md-4 offset-md-1">
                     <h2>Todo list</h2>
-                    {/*<List/>*/}
+                    <List/>
                 </div>
                 <div className="col-md-4 offset-md-1">
-                    {/*<Form/>*/}
+                    <Form/>
                 </div>
             </div>
         )
