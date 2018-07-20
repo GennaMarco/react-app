@@ -1,5 +1,6 @@
 import {
     ADD_ITEM,
+    DELETE_ITEM,
     CHECK_ITEM
 } from "../constants/todo-list-action-types";
 
@@ -17,12 +18,16 @@ reducerMap[CHECK_ITEM] = (state , action) => ({
     ...state,
     todo_list: [
         ...state.todo_list.map(function (itemList) {
-            if (itemList.id === action.item.id){
-                return {...itemList, isChecked: !action.item.isChecked}
-            }
-            else{
-                return itemList;
-            }
+            return itemList.id === action.item.id ? {...itemList, isChecked: !action.item.isChecked} : itemList;
+        })
+    ]
+});
+
+reducerMap[DELETE_ITEM] = (state , action) => ({
+    ...state,
+    todo_list: [
+        ...state.todo_list.filter(function (item) {
+            return item.id !== action.item.id;
         })
     ]
 });
