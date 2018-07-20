@@ -17,7 +17,8 @@ class ConnectedForm extends Component {
         super(props);
 
         this.state = {
-            content: ''
+            content: '',
+            isChecked: false
         }
     }
 
@@ -30,6 +31,7 @@ class ConnectedForm extends Component {
         const content = this.state.content;
         const newItem = {
             id: uuidv1(),
+            isChecked: false,
             content: content
         };
         this.props.addItem(newItem);

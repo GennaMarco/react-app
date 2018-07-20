@@ -6,6 +6,7 @@ import App from "./containers/App";
 import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 render(
     <Provider store={store}>
